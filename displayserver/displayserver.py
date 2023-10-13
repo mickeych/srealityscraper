@@ -12,12 +12,8 @@ port='5432'
 try: 
     conn = psycopg2.connect(database=database, user=username,
                             password=password, host=hostname,port=port)
-    
-    print("Display server connected to database")
-except:
-    print("I am unable to connect to the database")
-cur = conn.cursor()
-cur.execute("""
+    cur = conn.cursor()
+    cur.execute("""
     CREATE TABLE IF NOT EXISTS listings (
         id serial PRIMARY KEY, 
         title text,
@@ -25,6 +21,11 @@ cur.execute("""
         
     )
     """)
+    print("Display server connected to database")
+except:
+    print("I am unable to connect to the database")
+
+
 
 
 @app.route('/')
