@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    build: db/
+    ports:
+      - 5432:5432
+
+  scraper:
+    build: scraper/
+
+    command: scrapy crawl listings
+    depends_on:
+      - db
+  displayserver:
+    build: displayserver/
+
+    command: ./displayserver.py
+    ports:
+      - 8080:8080
+
+    depends_on:
+      - db

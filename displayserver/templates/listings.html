@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <style>
+        td {
+            width: 400px;
+            text-align: center;
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+    <table>
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Listing</th>
+                <th>Image URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td><a href={{row[2]}}>{{row[2]}}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
