@@ -17,12 +17,7 @@ try:
 except:
     print("I am unable to connect to the database")
 cur = conn.cursor()
-
-
-
-@app.route('/')
-def listings():
-    cur.execute("""
+cur.execute("""
     CREATE TABLE IF NOT EXISTS listings (
         id serial PRIMARY KEY, 
         title text,
@@ -30,6 +25,11 @@ def listings():
         
     )
     """)
+
+
+@app.route('/')
+def listings():
+
 
     cur.execute("SELECT * FROM listings")
     data = cur.fetchall()
