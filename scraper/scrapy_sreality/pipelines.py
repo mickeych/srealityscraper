@@ -24,14 +24,7 @@ class ScrapySrealityPipeline:
       
         self.cur = self.connection.cursor()
     
-        self.cur.execute("""
-        CREATE TABLE IF NOT EXISTS listings (
-            id serial PRIMARY KEY, 
-            title text,
-            imageURL text
-            
-        )
-        """)
+
 
     def process_item(self, item, spider):
         self.cur.execute(""" insert into listings (title, imageURL) values (%s,%s)""", (
