@@ -24,10 +24,13 @@ except:
 
 @app.route('/')
 def listings():
-
-
-    cur.execute("SELECT * FROM listings")
-    data = cur.fetchall()
+    cur.execute("select exists(select * from information_schema.tables where table_name=%s)", ('mytable',))
+    tblexists = cur.fetchone()[0]
+    if tblexists:
+        cur.execute("SELECT * FROM listings")
+        data = cur.fetchall()
+    else 
+        data = []
 
     return render_template('listings.html', data=data)
 
