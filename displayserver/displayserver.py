@@ -14,14 +14,7 @@ try:
                             password=password, host=hostname,port=port)
     conn.autocommit = True
     cur = conn.cursor()
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS listings (
-        id serial PRIMARY KEY, 
-        title text,
-        imageURL text
-        
-    )
-    """)
+
     print("Display server connected to database")
 except:
     print("I am unable to connect to the database")
