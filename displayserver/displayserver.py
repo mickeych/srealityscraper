@@ -12,6 +12,7 @@ port='5432'
 try: 
     conn = psycopg2.connect(database=database, user=username,
                             password=password, host=hostname,port=port)
+    conn.autocommit = True
     cur = conn.cursor()
     cur.execute("""
     CREATE TABLE IF NOT EXISTS listings (
