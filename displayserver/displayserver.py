@@ -24,7 +24,7 @@ except:
 
 @app.route('/')
 def listings():
-    cur.execute("select exists(select * from information_schema.tables where table_name=%s)", ('mytable',))
+    cur.execute("select exists(select * from information_schema.tables where table_name=%s)", ('listings',))
     tblexists = cur.fetchone()[0]
     if tblexists:
         cur.execute("SELECT * FROM listings")
