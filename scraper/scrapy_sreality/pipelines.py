@@ -21,9 +21,16 @@ class ScrapySrealityPipeline:
         self.connection = psycopg2.connect(
             host=hostname, user=username, password=password, database=database, port = port
             )
-      
+        self.connection.autocommit = True
         self.cur = self.connection.cursor()
-    
+        self.cur.execute("""
+        CREATE TABLE IF NOT EXISTS listings (
+            id serial PRIMARY KEY, 
+            title text,
+            imageURL text
+            
+        )
+        """)
 
 
     def process_item(self, item, spider):
