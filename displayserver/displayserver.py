@@ -29,7 +29,7 @@ def listings():
     if tblexists:
         cur.execute("SELECT * FROM listings")
         data = cur.fetchall()
-    else 
+    else:
         data = []
 
     return render_template('listings.html', data=data)
